@@ -109,7 +109,7 @@ code {padding: 2px 4px;border-radius: 3px;font-size: 14px;}
             avatar.className = 'avatar';
             const bubble = document.createElement('div');
             bubble.className = 'bubble';
-            bubble.innerHTML = marked.parse(content);
+            bubble.innerHTML = marked.parse(content.replace(/\\\(/g, '&#92;&#40;').replace(/\\\)/g, '&#92;&#41;').replace(/\\\[/g, '&#92;&#91;') .replace(/\\\]/g, '&#92;&#93;'));
             if (role === 'assistant') bubbleGroup.appendChild(avatar);
             if (role !== 'system') bubbleGroup.appendChild(bubble);
             if (role === 'user') bubbleGroup.appendChild(avatar);
